@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "vec3.h"
+#include <cmath>
 
 vec3::vec3()
 {
@@ -38,6 +39,10 @@ void vec3::setZ(float z) {
 	this->z = z;
 }
 
+float vec3::length() const {
+	return sqrt(x * x + y * y + z * z);
+}
+
 vec3 vec3::operator+ (vec3 const& v) const {
 	return vec3(x + v.x, y + v.y, z + v.z);
 }
@@ -49,4 +54,30 @@ vec3 vec3::operator* (float const f) const {
 }
 vec3 vec3::operator/ (float const f) const {
 	return vec3(x / f, y / f, z / f);
+}
+
+vec3 vec3::normalize() const {
+	float len = length();
+	return vec3(x / len, y / len, z / len);
+}
+vec3 vec3::normalize(const vec3& v) const {
+	float len = v.length();
+	return vec3(v.x / len, v.y / len, v.z / len);
+}
+void vec3::normalized() {
+	float len = length();
+	x /= len;
+	y /= len;
+	z /= len;
+}
+
+float vec3::dot(const vec3& v) const{
+	return x * v.x + y * v.y + z * v.z;
+}
+
+vec3 vec3::cross(const vec3& v) const {
+	float x = this->y * v.z - this->z * v.y;
+	float y = this->z * v.x - this->x - v.z;
+	float z = this->x * v.y - this->y - v.x;
+	return vec3(x, y, z);
 }
