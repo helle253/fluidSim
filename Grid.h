@@ -12,8 +12,13 @@ public:
 
 	void setTallCellHeight(int h);
 
+	Cell getCellValue(Vec3 subCell);
+
 protected:
 	std::vector<std::vector<std::vector<Cell>>> contents;
 	int tallCellHeight;
+	int xMax;
+	int yMax;
+	int zMax;
 };
 
