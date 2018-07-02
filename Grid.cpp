@@ -11,6 +11,10 @@ Grid::~Grid()
 {
 }
 
-void Grid::getTallCellHeight() const {
-	return tallCellHeight
+int Grid::getTallCellHeight() const {
+	return tallCellHeight;
+}
+
+void Grid::setTallCellHeight(int h) {
+	tallCellHeight = h;
 }
