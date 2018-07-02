@@ -1,12 +1,16 @@
 #pragma once
-class cell
+
+#include "Vec3.h"
+
+
+class Cell
 {
 public:
-	cell();
-	~cell();
+	Cell();
+	~Cell();
 
 	protected: 
 		float dim;
-
+		Vec3 velocity;
 };
 

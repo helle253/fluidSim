@@ -1,12 +1,12 @@
 #include "stdafx.h"
-#include "cell.h"
+#include "Cell.h"
 
 
-cell::cell()
+Cell::Cell()
 {
 }
 
 
-cell::~cell()
+Cell::~Cell()
 {
 }

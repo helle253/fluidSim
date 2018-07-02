@@ -1,10 +1,10 @@
 #pragma once
-class vec3
+class Vec3
 {
 public:
-	vec3();
-	vec3(float x, float y, float z);
-	~vec3();
+	Vec3();
+	Vec3(float x, float y, float z);
+	~Vec3();
 	
 	float getX() const;
 	float getY() const;
@@ -16,18 +16,18 @@ public:
 	
 	float length() const;
 
-	vec3 operator+ (const vec3&) const;
-	vec3 operator- (const vec3&) const;
-	vec3 operator* (const float) const;
-	vec3 operator/ (const float) const;
+	Vec3 operator+ (const Vec3&) const;
+	Vec3 operator- (const Vec3&) const;
+	Vec3 operator* (const float) const;
+	Vec3 operator/ (const float) const;
 
-	vec3 normalize() const;
-	vec3 normalize(const vec3&) const;
+	Vec3 normalize() const;
+	Vec3 normalize(const Vec3&) const;
 	void normalized();
 
-	float dot(const vec3&) const;
+	float dot(const Vec3&) const;
 
-	vec3 cross(const vec3&) const;
+	Vec3 cross(const Vec3&) const;
 
 protected:
 	float x;
