@@ -26,14 +26,14 @@ Cell Grid::getCellValue(Vec3 subCell) {
 	if (x > 0 && x < xMax &&
 		z > 0 && y < zMax){
 		//y value is above the tall cell but within the grid
-		if (y > tallCellHeight && y < yMax) {
+		if (y > tallCellHeights[x][z] && y < yMax) {
 			return contents[x][y][z];
 		}
 		//y value is within the tall cell
-		else if (y < tallCellHeight && y > 0) {
+		else if (y < tallCellHeights[x][z] && y > 0) {
 			Cell top = contents[x][yMax - 2][z];
 			Cell bottom = contents[x][yMax - 1][z];
-			float weight = y / tallCellHeight;
+			float weight = y / tallCellHeights[x][z];
 			return bottom.interpolate(top, weight);
 		}
 		//y value is above the grid. Return identity Cell that functions as air

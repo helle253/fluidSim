@@ -16,7 +16,7 @@ public:
 
 protected:
 	std::vector<std::vector<std::vector<Cell>>> contents;
-	int tallCellHeight;
+	std::vector<std::vector<int>> tallCellHeights;
 	int xMax;
 	int yMax;
 	int zMax;
