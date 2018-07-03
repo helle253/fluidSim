@@ -55,3 +55,7 @@ Cell Grid::getCellValue(Vec3 subCell) {
 	}
 
 }
+
+void Grid::extrapolateVelocity(float deltaTime) {
+
+}

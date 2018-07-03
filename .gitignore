@@ -5,3 +5,10 @@
 *.obj
 *.pch
 *.tlog
+*.obj
+*.obj
+*.obj
+*.pch
+*.tlog
+*.tlog
+*.pch

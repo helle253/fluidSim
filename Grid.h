@@ -15,6 +15,7 @@ public:
 	void setTallCellHeight(Vec3 v, int h);
 
 	Cell getCellValue(Vec3 subCell);
+	void extrapolateVelocity(float deltaTime);
 
 protected:
 	std::vector<std::vector<std::vector<Cell>>> contents;

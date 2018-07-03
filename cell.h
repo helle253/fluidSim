@@ -10,6 +10,8 @@ class Cell
 public:
 	Cell();
 	Cell(Vec3 velocity, Vec3 levelSet, float pressure);
+	Cell(Vec3 velocity, Vec3 levelSet, float pressure, int terrainType);
+	Cell(int terrainType);
 	~Cell();
 
 	Vec3 getVelocity() const;
