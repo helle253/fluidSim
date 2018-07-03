@@ -11,12 +11,17 @@ Grid::~Grid()
 {
 }
 
-int Grid::getTallCellHeight() const {
-	return tallCellHeight;
+int Grid::getTallCellHeight(int x, int z) const {
+	return tallCellHeights[x][z];
 }
-
-void Grid::setTallCellHeight(int h) {
-	tallCellHeight = h;
+int Grid::getTallCellHeight(Vec3 v) const {
+	return tallCellHeights[v.getX()][v.getZ()];
+}
+void Grid::setTallCellHeight(int x, int z, int h) {
+	tallCellHeights[x][z] = h;
+}
+void Grid::setTallCellHeight(Vec3 v, int h) {
+	tallCellHeights[v.getX()][v.getZ()] = h;
 }
 
 Cell Grid::getCellValue(Vec3 subCell) {

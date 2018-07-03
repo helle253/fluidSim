@@ -6,6 +6,11 @@ Cell::Cell()
 {
 }
 
+Cell::Cell(Vec3 velocity, Vec3 levelSet, float pressure) {
+	this->velocity = velocity;
+	this->levelSet = levelSet;
+	this->pressure = pressure;
+}
 
 Cell::~Cell()
 {
@@ -20,8 +25,8 @@ Vec3 Cell::getLevelSet() const {
 float Cell::getPressure() const {
 	return pressure;
 }
-bool Cell::getTerrainFlag() const {
-	return terrainFlag;
+int Cell::getTerrainType() const {
+	return terrainType;
 }
 
 void Cell::setVelocity(Vec3 v) {
@@ -33,14 +38,13 @@ void Cell::setLevelSet(Vec3 l) {
 void Cell::setPressure(float p) {
 	pressure = p;
 }
-void Cell::setTerrainFlag(bool t) {
-	terrainFlag = t;
+void Cell::setTerrainType(int t) {
+	terrainType = t;
 }
 
 Cell Cell::interpolate(Cell c, float weight) const{
-	Cell retVal = Cell();
-	retVal.setVelocity = c.getVelocity * weight + velocity * (1 - weight);
-	retVal.setLevelSet = c.getLevelSet * weight + levelSet * (1 - weight);
-	retVal.setPressure = c.getPressure * weight + pressure * (1 - weight);
-	return retVal;
+	Vec3 v = c.getVelocity() * weight + velocity * (1 - weight);
+	Vec3 l = c.getLevelSet() * weight + levelSet * (1 - weight);
+	float p = c.getPressure() * weight + pressure * (1 - weight);
+	return Cell(v, l, p);
 }

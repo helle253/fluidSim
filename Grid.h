@@ -8,9 +8,11 @@ public:
 	Grid();
 	~Grid();
 
-	int getTallCellHeight() const;
+	int getTallCellHeight(int x, int z) const;
+	int getTallCellHeight(Vec3 v) const;
 
-	void setTallCellHeight(int h);
+	void setTallCellHeight(int x, int z, int h);
+	void setTallCellHeight(Vec3 v, int h);
 
 	Cell getCellValue(Vec3 subCell);
 

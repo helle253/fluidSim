@@ -1,23 +1,26 @@
 #pragma once
-
 #include "Vec3.h"
 
+#define TERRAIN_AIR 0
+#define TERRAIN_WATER 1
+#define TERRIAIN_SOLID 2
 
 class Cell
 {
 public:
 	Cell();
+	Cell(Vec3 velocity, Vec3 levelSet, float pressure);
 	~Cell();
 
 	Vec3 getVelocity() const;
 	Vec3 getLevelSet() const;
 	float getPressure() const;
-	bool getTerrainFlag() const;
+	int getTerrainType() const;
 
 	void setVelocity(Vec3 v);
 	void setLevelSet(Vec3 l);
 	void setPressure(float p);
-	void setTerrainFlag(bool t);
+	void setTerrainType(int t);
 
 	/*
 	Interpolates between the cells, where cell c is given a weight, and the called 
@@ -29,6 +32,6 @@ public:
 		Vec3 velocity;
 		Vec3 levelSet;
 		float pressure;
-		bool terrainFlag;
+		int terrainType;
 };
 

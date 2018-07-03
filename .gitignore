@@ -2,3 +2,6 @@
 *.log
 *.obj
 *.tlog
+*.obj
+*.pch
+*.tlog
