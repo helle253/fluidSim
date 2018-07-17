@@ -21,6 +21,9 @@ Grid::Grid(Vec3 size) {
 			}
 		}
 	}
+	xMax = x;
+	yMax = y;
+	zMax = z;
 }
 
 Grid::Grid(int x, int y, int z) {
@@ -37,7 +40,9 @@ Grid::Grid(int x, int y, int z) {
 			}
 		}
 	}
-
+	xMax = x;
+	yMax = y;
+	zMax = z;
 }
 
 Grid::~Grid()
