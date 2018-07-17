@@ -6,6 +6,8 @@ class Grid
 {
 public:
 	Grid();
+	Grid(int x, int y, int z);
+	Grid(Vec3 size);
 	~Grid();
 
 	int getTallCellHeight(int x, int z) const;
@@ -21,7 +23,11 @@ public:
 	Cell getCellValue(Vec3 subCell);
 	void extrapolateVelocity(float deltaTime);
 
-	Grid coarsen();
+	//returns the # size of the contents array in subcell units.
+	Vec3 gridSize();
+
+	std::vector<Grid> coarsen(std::vector<Grid> grids, int L);
+	std::vector<Grid> coarsen();
 
 protected:
 	std::vector<std::vector<std::vector<Cell>>> contents;
