@@ -24,6 +24,20 @@ void Grid::setTallCellHeight(Vec3 v, int h) {
 	tallCellHeights[v.getX()][v.getZ()] = h;
 }
 
+int Grid::getTerrainHeight(int x, int z) const {
+	return terrainHeights[x][z];
+}
+int Grid::getTerrainHeight(Vec3 v) const {
+	return terrainHeights[v.getX()][v.getZ()];
+}
+void Grid::setTerrainHeight(int x, int z, int h) {
+	terrainHeights[x][z] = h;
+}
+void Grid::setTerrainHeight(Vec3 v, int h) {
+	terrainHeights[v.getX()][v.getZ()] = h;
+}
+
+
 Cell Grid::getCellValue(Vec3 subCell) {
 	int x = subCell.getX();
 	int y = subCell.getY();
