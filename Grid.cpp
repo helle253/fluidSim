@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Grid.h"
 #include <math.h>
+#include <algorithm>
 
 Grid::Grid()
 {
@@ -80,27 +81,46 @@ Can coarsen the grid. L is defined as logBASE2min(sizeX, sizeY, sizeZ) at the fi
 Creates the next grid, and then calls the coarsen function on the newly created grid object.
 */
 std::vector<Grid> Grid::coarsen(std::vector<Grid> grids, int L) {
-	if (L < 1) return grids;
 	grids.push_back(*this);
-	Vec3 size = gridSize();
+	if (L < 1) return grids;
 
-	
+	Vec3 size = gridSize();
 	Grid g = Grid(size/2);
+	//todo: populate grid g with calculated values using trilinear interpolation.
+
 	return g.coarsen(grids, L - 1);
 }
 //same function as above, but calculates for L and then call the above function
 std::vector<Grid> Grid::coarsen() {
+	std::vector<Grid> coarsenedGrids = std::vector<Grid>();
+	coarsenedGrids.push_back(*this);
 	int xSize = contents.size();
 	int ySize = contents[0].size();
 	int zSize = contents[0][0].size();
 	int L = fmin(log2(xSize), fmin(log2(ySize), log2(zSize)));
-
-	std::vector<Grid> coarsenedGrids = std::vector<Grid>();
-	coarsenedGrids.push_back(*this);
+	if (L == 1) return coarsenedGrids;
 	Grid g = Grid(xSize / 2, ySize / 2, zSize / 2);
 
 	//todo: populate grid g with calculated values using trilinear interpolation.
-	return g.coarsen(coarsenedGrids, L);
+	for (int i = 0; i < g.xMax; i++) {
+		for (int j = 0; j < g.zMax; j++) {
+			int terrainHeight, tallCellHeight;
+			terrainHeight = std::min(
+				std::min(terrainHeights[i * 2][j * 2], terrainHeights[i * 2 + 1][j * 2]),
+				std::min(terrainHeights[i * 2][j * 2 + 1], terrainHeights[i * 2 + 1][j * 2 + 1])) / 2;
+			tallCellHeight = std::max(
+				std::max(tallCellHeights[i * 2][j * 2], tallCellHeights[i * 2 + 1][j * 2]),
+				std::max(tallCellHeights[i * 2][j * 2 + 1], tallCellHeights[i * 2 + 1][j * 2 + 1])) / 2.0f;
+		}
+	}
+	for (int i = 0; i < g.xMax; i++) {
+		for (int j = 0; j < g.yMax; j++) {
+			for (int k = 0; k < g.zMax; k++) {
+
+			}
+		}
+	}
+	return g.coarsen(coarsenedGrids, L - 1);
 }
 Vec3 Grid::gridSize() {
 	return Vec3(contents.size(), contents[0].size(), contents[0][0].size());

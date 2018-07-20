@@ -34,6 +34,5 @@ public:
 		Vec3 velocity;
 		Vec3 levelSet;
 		float pressure;
-		int terrainType;
 };
 
