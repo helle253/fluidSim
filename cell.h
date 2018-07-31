@@ -11,18 +11,15 @@ public:
 	Cell();
 	Cell(Vec3 velocity, Vec3 levelSet, float pressure);
 	Cell(Vec3 velocity, Vec3 levelSet, float pressure, int terrainType);
-	Cell(int terrainType);
 	~Cell();
 
 	Vec3 getVelocity() const;
 	Vec3 getLevelSet() const;
 	float getPressure() const;
-	int getTerrainType() const;
 
 	void setVelocity(Vec3 v);
 	void setLevelSet(Vec3 l);
 	void setPressure(float p);
-	void setTerrainType(int t);
 
 	/*
 	Interpolates between the cells, where cell c is given a weight, and the called 

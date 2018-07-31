@@ -10,19 +10,14 @@ Cell::Cell(Vec3 velocity, Vec3 levelSet, float pressure) {
 	this->velocity = velocity;
 	this->levelSet = levelSet;
 	this->pressure = pressure;
-	terrainType = TERRAIN_WATER;
 }
 
 Cell::Cell(Vec3 velocity, Vec3 levelSet, float pressure, int terrainType) {
 	this->velocity = velocity;
 	this->levelSet = levelSet;
 	this->pressure = pressure;
-	this->terrainType = terrainType;
 }
 
-Cell::Cell(int terrainType) {
-	this->terrainType = terrainType;
-}
 Cell::~Cell()
 {
 }

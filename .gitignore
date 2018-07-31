@@ -12,3 +12,5 @@
 *.tlog
 *.tlog
 *.pch
+*.tlog
+*.pdb
