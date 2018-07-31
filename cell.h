@@ -1,9 +1,6 @@
 #pragma once
 #include "Vec3.h"
 
-#define TERRAIN_AIR 0
-#define TERRAIN_WATER 1
-#define TERRIAIN_SOLID 2
 
 class Cell
 {
